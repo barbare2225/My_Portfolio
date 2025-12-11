@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Barbare Gelashvili — Portfolio</title>
+    <style>
+      :root {
+        --bg: #f7fafc;
+        --card: #ffffff;
+        --muted: #6b7280;
+        --accent: #111827;
+        --glass: rgba(255, 255, 255, 0.6);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial;
+        background: var(--bg);
+        color: var(--accent);
+        line-height: 1.5;
+      }
+      .container {
+        max-width: 980px;
+        margin: 36px auto;
+        padding: 24px;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .brand {
+        font-size: 20px;
+        font-weight: 700;
+      }
+      nav a {
+        margin-left: 12px;
+        text-decoration: none;
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .hero {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.6),
+          transparent
+        );
+        padding: 36px;
+        border-radius: 12px;
+      }
+      .hero h1 {
+        margin: 0;
+        font-size: 36px;
+      }
+      .hero p {
+        margin: 8px 0 0;
+        color: var(--muted);
+      }
+
+      section {
+        margin-top: 28px;
+      }
+      .card {
+        background: var(--card);
+        padding: 18px;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+      }
+
+      .grid {
+        display: grid;
+        gap: 14px;
+      }
+      .grid.cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .tags {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+      .tag {
+        background: #f3f4f6;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      /* Skills */
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .skill {
+        padding: 8px 12px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(2, 6, 23, 0.03);
+      }
+
+      /* Projects list */
+      .project {
+        cursor: pointer;
+      }
+      .project h3 {
+        margin: 0;
+      }
+      .project p {
+        color: var(--muted);
+        margin: 8px 0 0;
+      }
+
+      /* Modal */
+      .modal {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(2, 6, 23, 0.45);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.18s;
+      }
+      .modal.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .modal .dialog {
+        width: min(720px, 92vw);
+        background: var(--card);
+        padding: 20px;
+        border-radius: 12px;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 36px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      /* Responsive */
+      @media (max-width: 720px) {
+        .grid.cols-2 {
+          grid-template-columns: 1fr;
+        }
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="brand">Barbare Gelashvili</div>
+        <nav>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero card">
+          <img
+            src="./1763538127170.png"
+            alt="Profile"
+            style="
+              width: 120px;
+              height: 120px;
+              border-radius: 50%;
+              object-fit: cover;
+              margin-bottom: 16px;
+            "
+          />
+          <h1>Hi, I'm Barbare</h1>
+          <p>
+            Student & aspiring frontend developer. I enjoy making clean,
+            beautiful UI with React and modern CSS.
+          </p>
+        </section>
+
+        <section id="about" class="card">
+          <h2>About Me</h2>
+          <p>
+            My name is <strong>Barbare Gelashvili</strong>.I live in Georgia,
+            Tbilisi. I'm currently studying at tbilisi state university (third
+            year computer science student) and learning React at SkillWill
+            college. I enjoy creating clean and visually appealing interfaces
+            and making things "just right." I'm motivated to improve every day
+            and my goal is to become skilled enough to contribute to real
+            projects, support the community, and build useful tools.
+          </p>
+        </section>
+
+        <section id="projects">
+          <h2>Projects</h2>
+          <div class="grid cols-2">
+            <article class="card project" data-project="coffee">
+              <h3>1. Coffee Shop</h3>
+              <p>
+                A full-featured coffee shop web app. users can browse coffees,
+                see prices (calculated from ingredients), and view ingredients
+                and descriptions. Admin can modify ingredients and coffees;
+                prices update automatically.
+              </p>
+              <a href="https://github.com/kobuladze011/sw-p1">Link to github</a>
+              <div class="tags">
+                <span class="tag">React</span>
+                <span class="tag">styled-components</span>
+                <span class="tag">Custom Hooks</span>
+                <span class="tag">Local JSON CRUD</span>
+              </div>
+            </article>
+
+            <article class="card project" data-project="more">
+              <h3>Other Projects</h3>
+              <p>
+                Small demos and exercises: algorithm visualizers, small JS
+                games, and utilities that helped me learn data structures and
+                DOM manipulation.
+              </p>
+              <div class="tags">
+                <span class="tag">JavaScript</span>
+                <span class="tag">C++</span>
+                <span class="tag">Algorithms</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="skills" class="card">
+          <h2>Skills</h2>
+          <div class="skills">
+            <div class="skill">React</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">styled-components</div>
+            <div class="skill">CSS Modules</div>
+            <div class="skill">C++</div>
+            <div class="skill">Java</div>
+            <div class="skill">Data Structures & Algorithms</div>
+            <div class="skill">Linux</div>
+            <div class="skill">Windows (CLI)</div>
+            <div class="skill">Basic Testing</div>
+            <div class="skill">Networking Basics</div>
+            <div class="skill">Arduino</div>
+            <div class="skill">Databases</div>
+          </div>
+        </section>
+
+        <section id="contact" class="card">
+          <h2>Contact</h2>
+          <p>If you'd like to get in touch</p>
+          <p>
+            <a href="https://www.linkedin.com/in/barbare-gelashvili/">Linkdn</a>
+          </p>
+          <p>
+            <a href="mailto:b.gelashvili006@gmail.com"
+              >b.gelashvili006@gmail.com</a
+            >
+          </p>
+          <p>
+            <a href="https://github.com/barbare2225">GitHub</a>
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        © 2025 Barbare Gelashvili — Built with HTML, CSS & vanilla JS
+      </footer>
+    </div>
+
+    <!-- Modal (project details) -->
+    <div id="modal" class="modal" role="dialog" aria-hidden="true">
+      <div class="dialog">
+        <button
+          id="modalClose"
+          style="
+            float: right;
+            border: none;
+            background: none;
+            font-size: 18px;
+            cursor: pointer;
+          "
+        >
+          ✕
+        </button>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+
+    <script>
+      // Smooth scroll for nav
+      document.querySelectorAll('nav a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          document
+            .querySelector(a.getAttribute("href"))
+            .scrollIntoView({ behavior: "smooth" });
+        });
+      });
+
+      // Project modal
+      const modal = document.getElementById("modal");
+      const modalContent = document.getElementById("modalContent");
+      document.querySelectorAll(".project").forEach((p) =>
+        p.addEventListener("click", () => {
+          const key = p.getAttribute("data-project");
+          openProject(key);
+        })
+      );
+
+      function openProject(key) {
+        if (key === "coffee") {
+          modalContent.innerHTML = `<h3>Coffee Shop - Details</h3>
+          <p>This app uses local JSON files as a simple CRUD backend. Admin can add/edit coffees and ingredients; coffee prices are computed from ingredient costs. Also integrated a currency conversion API to show prices in different currencies. Built with React, custom hooks, styled-components and CSS Modules.</p>
+          <ul>
+            <li>Features: Browse coffees, admin CRUD, auto price calc, currency conversion</li>
+            <li>Tech: React, styled-components, fetch, local JSON server</li>
+          </ul>`;
+        } else {
+          modalContent.innerHTML = `<h3>Other Projects</h3><p>Collection of small demos: algorithm visualizers, JS utilities, and practice code for data structures and C++ exercises.</p>`;
+        }
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+      }
+
+      document
+        .getElementById("modalClose")
+        .addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+      function closeModal() {
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+
+      // Small enhancement: keyboard escape to close modal
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+      });
+    </script>
+  </body>
+</html>
